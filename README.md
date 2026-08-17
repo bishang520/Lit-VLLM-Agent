@@ -1,6 +1,6 @@
 # 混合 RAG + vLLM 学术文档 Agent 系统
 
-> 项目周期：2025.10 – 2026.3 · 简历工程化落地版本
+> 项目周期：2025.10 – 2026.3 · 
 
 ![CI](https://github.com/bishang520/Lit-VLLM-Agent/actions/workflows/ci.yml/badge.svg) ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) [![HuggingFace Model](https://img.shields.io/badge/Model-AWQ%204bit-blue?logo=huggingface)](https://huggingface.co/bishang520/Lit-VLLM-Agent-AWQ)
 
