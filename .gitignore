@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 中间产物与敏感文件（下载的论文、模型、日志、向量库、SSH 密钥）
+work/
+
+# 密钥与日志
+.env
+*.pem
+*.key
+*.log
+
+# IDE
+.idea/
+.vscode/
+.DS_Store

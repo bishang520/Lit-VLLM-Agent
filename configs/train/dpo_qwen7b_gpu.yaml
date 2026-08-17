@@ -1,0 +1,45 @@
+# Qwen2.5-7B DPO 对齐（单卡 4090 24G 优化版）
+model:
+  base: Qwen/Qwen2.5-7B-Instruct
+  tokenizer: Qwen/Qwen2.5-7B-Instruct
+  sft_adapter: work/models/sft-qwen7b
+  extended_tokenizer_dir: work/models/extended_tokenizer_smoke
+
+data:
+  train_file: work/data/dpo_train.jsonl
+  max_length: 2048
+
+qlora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+  bits: 4
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: bfloat16
+  bnb_4bit_use_double_quant: true
+
+training:
+  output_dir: work/models/dpo-qwen7b
+  num_train_epochs: 1
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16
+  learning_rate: 5.0e-6
+  lr_scheduler_type: cosine
+  warmup_steps: 10
+  logging_steps: 5
+  save_steps: 100
+  save_total_limit: 2
+  gradient_checkpointing: true
+  fp16: false
+  bf16: true
+  report_to: none
+  max_steps: 200
+
+dpo:
+  beta: 0.1
+  loss_type: sigmoid
+
+merge:
+  save_merged: true
+  merged_dir: work/models/dpo-qwen7b-merged

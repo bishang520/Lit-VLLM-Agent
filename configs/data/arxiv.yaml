@@ -1,0 +1,10 @@
+# ArXiv 数据采集配置
+categories:
+  - cs.CL
+  - cs.AI
+  - cs.LG
+  - math.LG
+max_results: 1000
+download_dir: work/data/arxiv_pdfs
+extract_dir: work/data/arxiv_txt
+sort_by: submittedDate

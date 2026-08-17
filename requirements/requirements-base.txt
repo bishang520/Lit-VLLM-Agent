@@ -1,0 +1,7 @@
+pyyaml>=6.0
+python-dotenv>=1.0
+tqdm>=4.66
+requests>=2.31
+numpy>=1.26
+arxiv>=2.1
+jsonschema>=4.21

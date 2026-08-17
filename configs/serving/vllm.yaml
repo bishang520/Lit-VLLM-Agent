@@ -1,0 +1,17 @@
+# vLLM 服务配置（GPU 服务器）
+model: work/models/dpo-qwen7b-awq
+task: generate
+tensor_parallel_size: 1
+gpu_memory_utilization: 0.90
+max_model_len: 8192
+quantization: awq              # 使用 AWQ 4-bit 量化权重
+guided_decoding_backend: xgrammar   # 或 outlines；用于 JSON Schema 约束
+enforce_eager: false
+dtype: float16
+
+server:
+  host: 0.0.0.0
+  port: 8000
+  temperature: 0.2
+  max_tokens: 1024
+  response_schema: configs/serving/answer_schema.json

@@ -1,0 +1,12 @@
+# 仅 GPU 服务器（Linux）使用
+torch>=2.3
+transformers>=4.46
+datasets>=3.0
+accelerate>=1.0
+peft>=0.13
+trl>=0.14
+bitsandbytes>=0.44
+deepspeed>=0.15
+tokenizers>=0.20
+wandb>=0.17
+scipy>=1.13

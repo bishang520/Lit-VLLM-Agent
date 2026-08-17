@@ -1,0 +1,45 @@
+# DPO 偏好对齐训练配置（GPU 服务器，基于 SFT 产物）
+model:
+  base: Qwen/Qwen2.5-7B-Instruct
+  tokenizer: Qwen/Qwen2.5-7B-Instruct
+  sft_adapter: work/models/sft-qlora-qwen7b
+  extended_tokenizer_dir: work/models/extended_tokenizer
+
+data:
+  train_file: work/data/dpo_train.jsonl
+  max_length: 2048
+  max_prompt_length: 1024
+
+qlora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+  bits: 4
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: bfloat16
+  bnb_4bit_use_double_quant: true
+
+training:
+  output_dir: work/models/dpo-qwen7b
+  num_train_epochs: 1
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8
+  learning_rate: 5.0e-6
+  lr_scheduler_type: cosine
+  warmup_steps: 50
+  logging_steps: 10
+  save_steps: 200
+  save_total_limit: 3
+  gradient_checkpointing: true
+  fp16: false
+  bf16: true
+  report_to: none
+
+dpo:
+  beta: 0.1
+  loss_type: sigmoid
+
+merge:
+  save_merged: true
+  merged_dir: work/models/dpo-merged-qwen7b

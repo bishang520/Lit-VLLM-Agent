@@ -1,0 +1,38 @@
+# RAG 检索配置（本机 CPU 演示默认轻量模型，生产可换成 BGE-M3 / bge-reranker-v2-m3）
+chunk:
+  mode: hierarchical        # 层级切块：论文 -> 章节 -> 段落块
+  chunk_size: 600
+  overlap: 80
+
+embedder:
+  name: BAAI/bge-small-en-v1.5
+  dim: 384
+  device: cpu
+  normalize: true
+  batch_size: 16
+
+reranker:
+  name: cross-encoder/ms-marco-MiniLM-L-6-v2
+  top_k: 5
+  device: cpu
+
+bm25:
+  k1: 1.5
+  b: 0.75
+  cache_file: work/data/bm25_index.pkl
+
+fusion:
+  method: rrf              # Reciprocal Rank Fusion
+  rrf_k: 60
+  weights: { dense: 1.0, sparse: 1.0 }
+
+milvus:
+  uri: work/data/milvus_demo.db
+  collection: paper_chunks
+  index_type: FLAT
+
+self_rag:
+  judge_model: cross-encoder/nli-deberta-v3-xsmall
+  relevance_threshold: 0.30
+  faithfulness_threshold: 0.50
+  citation_threshold: 0.35

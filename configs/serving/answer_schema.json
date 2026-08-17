@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "answer": {
+      "type": "string",
+      "description": "对用户问题的最终回答，必须基于检索片段，禁止编造"
+    },
+    "reasoning": {
+      "type": "string",
+      "description": "逐步推理过程（Chain-of-Thought）"
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "chunk_id": { "type": "string" },
+          "confidence": { "type": "number" }
+        },
+        "required": ["chunk_id"],
+        "additionalProperties": false
+      }
+    },
+    "confidence": { "type": "number" },
+    "is_grounded": { "type": "boolean" }
+  },
+  "required": ["answer", "reasoning", "citations", "confidence", "is_grounded"],
+  "additionalProperties": false
+}
