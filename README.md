@@ -2,6 +2,8 @@
 
 > 项目周期：2025.10 – 2026.3 · 简历工程化落地版本
 
+![CI](https://github.com/bishang520/Lit-VLLM-Agent/actions/workflows/ci.yml/badge.svg) ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) [![HuggingFace Model](https://img.shields.io/badge/Model-AWQ%204bit-blue?logo=huggingface)](https://huggingface.co/bishang520/Lit-VLLM-Agent-AWQ)
+
 针对长篇幅科研论文与技术文档中格式复杂、通用大模型易产生幻觉、检索召回率低等问题，基于开源基座模型搭建的高精度文献问答 Agent：**原文可溯源、结构化推理、低延迟流式输出**。数据源基于 ArXiv 开源文档，结合 GPT-4 构造微调与偏好对齐数据集。
 
 ## 模型发布
