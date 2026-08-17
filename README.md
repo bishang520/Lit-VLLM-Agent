@@ -4,6 +4,14 @@
 
 针对长篇幅科研论文与技术文档中格式复杂、通用大模型易产生幻觉、检索召回率低等问题，基于开源基座模型搭建的高精度文献问答 Agent：**原文可溯源、结构化推理、低延迟流式输出**。数据源基于 ArXiv 开源文档，结合 GPT-4 构造微调与偏好对齐数据集。
 
+## 模型发布
+
+训练完成的学术版模型（Qwen2-7B 底座，领域词表扩充 + SFT + DPO，AWQ 4-bit 量化，约 5.2GB）已开源至 HuggingFace：
+
+- 模型仓库：[bishang520/Lit-VLLM-Agent-AWQ](https://huggingface.co/bishang520/Lit-VLLM-Agent-AWQ)
+- 国内镜像加速：[hf-mirror.com/bishang520/Lit-VLLM-Agent-AWQ](https://hf-mirror.com/bishang520/Lit-VLLM-Agent-AWQ)
+- 一键部署：`vllm serve bishang520/Lit-VLLM-Agent-AWQ --task generate --quantization awq --dtype float16`
+
 ## 四大技术支柱
 
 | 模块 | 技术方案 | 运行环境 |
